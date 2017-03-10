@@ -1,6 +1,6 @@
 # https://hub.docker.com/r/tutum/influxdb/
 influxdb:
-        image: tutum/influxdb
+        image: tutum/influxdb:latest
         hostname: influxdb
         expose:
                 - 8083
@@ -8,17 +8,20 @@ influxdb:
         ports:
                 - "8083:8083"
                 - "8086:8086"
-        links:
-                - grafana
         environment:
                 - PRE_CREATE_DB     = "IoT_Demo"
                 - ADMIN_USER        = "root"
                 - INFLUXDB_INIT_PWD = "change12_me"
+        privileged: true
+        volumes:
+                - ./InfluxDB/scripts/init_script.influxql:/init_script.influxql:ro
 
 # https://hub.docker.com/r/grafana/grafana/
 grafana:
       image: grafana/grafana
       hostname: grafana
+      links:
+              - influxdb
       expose:
                 - 3000
       ports:

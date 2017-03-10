@@ -1,0 +1,4 @@
+CREATE DATABASE IoT_Demo
+CREATE USER psteiner WITH PASSWORD 'change12_me'
+GRANT WRITE ON IoT_Demo TO psteiner
+GRANT READ ON IoT_Demo TO psteiner
