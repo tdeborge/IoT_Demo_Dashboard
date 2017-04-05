@@ -1,0 +1,5 @@
+curl -i -XPOST http://ec2-35-165-48-201.us-west-2.compute.amazonaws.com:8086/query --data-urlencode "q=CREATE DATABASE IoT_Demo"
+curl -i -XPOST http://ec2-35-165-48-201.us-west-2.compute.amazonaws.com:8086/query --data-urlencode "q=CREATE USER psteiner WITH PASSWORD 'change12_me'"
+curl -i -XPOST http://ec2-35-165-48-201.us-west-2.compute.amazonaws.com:8086/query --data-urlencode "q=GRANT WRITE ON IoT_Demo TO psteiner"
+curl -i -XPOST http://ec2-35-165-48-201.us-west-2.compute.amazonaws.com:8086/query --data-urlencode "q=GRANT READ ON IoT_Demo TO psteiner"
+curl -i -XPOST http://ec2-35-165-48-201.us-west-2.compute.amazonaws.com:8086/query --data-urlencode "q=CREATE RETENTION POLICY "IOT" ON "IoT_Demo" DURATION 1d REPLICATION 1 DEFAULT"
